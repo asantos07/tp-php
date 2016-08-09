@@ -1,65 +1,72 @@
+
 <!DOCTYPE html>
-<html >
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--Titulo -->
-        <title> Trabalha Brasil </title>
+<head>
 
-        <!--Icone -->
-        <link rel="icon" href="/src/img/cms.jpg"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <!--Mobile ADRS style -->
-        <meta name="theme-color" content="rgb(100,100,100)"/>
-        <meta name="msapplication-navbutton-color" content="rgb(100,100,100)">
-        <meta name="apple-mobile-web-app-status-bar-style" content="rgb(100,100,100)">
-
-        <!--Import Google Icon Font-->
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
-        <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
-        <link rel="stylesheet" type="text/css" href="css/mcssfix.css"/>
-    </head>
-
-    <body ng-app="brworks" ng-controller="mainController">
-
-        <!--<ng-include src="'templates/menu_template.html'"></ng-include>-->
+    <title>JobFinder</title>
 
 
-        <!-- angular templating -->
-        <!-- this is where content will be injected -->
-        <div ng-view></div>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
-        <!-- Rodapé -->
-        <footer class="page-footer indigo darken-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col l9 s12">
-                        <h5 class="white-text">COLTEC/MG</h5>
-                        <p class="grey-text text-lighten-4">Essa página foi desenvolvida pelo Setor de Informática do Colégio Técnico de Minas Gerais.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright indigo darken-4">
-                <div class="container">
-                    Made with <i class="material-icons">favorite</i> by the lovely student <a href="https://www.ariel.santos.nom.br/">Ariel Santos</a>
-                </div>
-            </div>
-        </footer>
-        <!-- Fim rodapé -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
-        <!--jQuery e materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/angular.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
-        <script type="text/javascript" src="js/app.js"></script>
-        
-    </body>
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+
+    <meta name="theme-color" content="‪#758684‬">
+
+
+</head>
+
+<body id="page-top" ng-app="jobFinder">
+
+
+
+    <ng-view></ng-view>
+
+
+
+    <!--Core JS-->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!--AngularJS-->
+    <script src="app/AngularJS/angular.min.js"></script>
+    <script src="app/AngularJS/angular-route.min.js"></script>
+
+    <!--App-->
+    <script src="app/app.js"></script>
+
+    <!--Routes-->
+    <script src="app/routes.js"></script>
+
+    <!--Directives-->
+    <script src="app/directives/loginpage/registry/register-user.js"></script>
+    <script src="app/directives/loginpage/registry/register-company.js"></script>
+    <script src="app/directives/employeepage/profile-introduction.js"></script>
+    <script src="app/directives/employeepage/resume-section.js"></script>
+    <script src="app/directives/companypage/modal-job.js"></script>
+    <script src="app/directives/companypage/job.js"></script>
+    <script src="app/directives/companypage/operational-areas.js"></script>
+
+    <!--Controllers-->
+    <script src="app/controllers/homepage-controller.js"></script>
+    <script src="app/controllers/loginpage-controller.js"></script>
+    <script src="app/controllers/registerpage-controller.js"></script>
+    <script src="app/controllers/employee-controller.js"></script>
+    <script src="app/controllers/company-controller.js"></script>
+
+
+
+
+
+</body>
 </html>
