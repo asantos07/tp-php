@@ -9,7 +9,7 @@ namespace Controller;
 */
 class User extends DefaultController {
 
-    public function __invoke($request, $response, $args) {
+	public function __invoke(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
         if (array_key_exists("range", $args)) {
             $users = $this->getByRange($args['range']);
             if ($users) {
@@ -24,28 +24,11 @@ class User extends DefaultController {
             } else {
                 return $response->withStatus(404);
             }
-        }else {
-            $last = \Persistence\AutoIncrement::get(\Entity\Usuario::getExt());
-            return $response->write($last);
         }
     }
 
     /**
-     * 
-     * @param int $id
-     * @return Usuario Retorna Usuario se houver, se não retorna NULL
-     */
-    private function getById($id) {
-        $user = \Persistence\Persist::readObject($id, \Entity\Usuario::getExt());
-        if ($user) {
-            return $user;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * 
+     *
      * @param string $range
      * @return array(User) Retorna array de Usuario se houver, se não retorna NULL
      */
@@ -60,6 +43,20 @@ class User extends DefaultController {
             return $users;
         } else {
             return NULL;
+        }
+    }
+
+	/**
+	 *
+	 * @param int $id
+	 * @return Usuario Retorna Usuario se houver, se não retorna NULL
+	 */
+	private function getById($id) {
+		$user = \Persistence\Persist::readObject($id, \Entity\Usuario::getExt());
+		if ($user) {
+			return $user;
+		} else {
+			return null;
         }
     }
 

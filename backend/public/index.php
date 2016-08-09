@@ -2,12 +2,13 @@
 
 require_once '../vendor/autoload.php';
 
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 define("DB", "../data/");
 define("CRED", "../credentials/");
-define("HOST", "localhost:8080");
+define("HOST", "http://localhost:8080");
+define("LOGIN", "../login_map/");
 
 $app = new \Slim\App();
 header("Access-Control-Allow-Origin: *");
@@ -26,7 +27,6 @@ $app->get('/', $test);
 $app->group('/user', function () {
     $this->get('[/{range:[0-9]+[-][0-9]+}]', '\Controller\User');
     $this->get('/{id:[0-9]+}', '\Controller\User');
-    $this->get('/available', '\Controller\User');
 });
 $app->group('/company', function () {
     $this->get('[/{range:[0-9]+-[0-9]+}]', '\Controller\Company');
@@ -36,15 +36,16 @@ $app->group('/job', function () {
     $this->get('[/{range:[0-9]+-[0-9]+}]', '\Controller\Job');
     $this->get('/{id:[0-9]+}', '\Controller\Job');
 });
+$app->get('/verify/{type:user|company}/{id:[0-9]+}', '\Controller\EmailVerify');
 
 /**
  * "Secure" routes
  */
 $app->group('/register', function () {
-    $this->post('/{type:j}', '\Controller\Register')->setName('registerJob')->add(new \Middleware\AuthMiddleware());
-    $this->post('/{type:[u|c]}', '\Controller\Register');
+    $this->post('/{type:job}', '\Controller\Register')->setName('registerJob')->add(new \Middleware\AuthMiddleware());
+    $this->post('/{type:user|company}', '\Controller\Register');
 });
-$app->patch('/alter/{type:[u|c|j]}/{id:[0-9]+}', '\Controller\Alter')->setName('patch')->add(new \Middleware\AuthMiddleware());
+$app->patch('/alter/{type:user|company|job}/{id:[0-9]+}', '\Controller\Alter')->setName('patch')->add(new \Middleware\AuthMiddleware());
 
 /**
  * Rota de Login
